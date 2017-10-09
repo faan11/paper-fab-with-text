@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+
+<dom-module id="paper-fab-with-text">
+  <template>
+    <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+    <style>
+      :host {
+        display: block;
+      }
+      .data{
+        position:relative;
+        display:block;
+        border-radius:20%;
+        height: 40px;
+        width:auto;
+        background-color: var(--paper-fab-with-text-bg-color,gray);
+        color: var(--paper-fab-with-text-color,white);
+        text-align:center;
+        line-height: 40px;
+        padding-left:0px;
+        padding-right:0px;
+        @apply --paper-fab-with-text-mixin;
+
+      }
+      .data iron-icon{
+        margin-left:5px;
+        @apply --paper-fab-with-text-icon-mixin;
+
+      }
+    </style>
+    <div class="data">
+      {{text}}
+      <iron-icon icon="{{icon}}"></iron-icon>
+      <paper-ripple></paper-ripple>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `paper-fab-with-text`
+     *  This webcomponent is a paper-fab with text inside.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     *
+     *
+     *
+     * ### Styling
+     *
+     * `<paper-fab-with-text>` provides the following custom properties and mixins
+     *   for styling:
+     * Custom property | Description | Default
+     *  ----------------|-------------|----------
+     *  `--paper-fab-with-text-icon-mixin` | Icon mixin | {}
+     *  `--paper-fab-with-text-mixin` | Text mixin | {}
+     *  `--paper-fab-with-text-bg-color` | Component color | white
+     *  `--paper-fab-with-text-color` | Text color | gray
+     *
+     */
+    class PaperFabWithText extends Polymer.Element {
+      static get is() { return 'paper-fab-with-text'; }
+      static get properties() {
+        return {
+          /**
+          * Text field inside paper-fab.
+          */
+          text: {
+            type: String,
+            notify:true
+          },
+          /*
+           icon field name.
+          */
+
+          icon: {
+            type: String,
+            notify:true
+          },
+        };
+      }
+    }
+
+    window.customElements.define(PaperFabWithText.is, PaperFabWithText);
+  </script>
+</dom-module>
